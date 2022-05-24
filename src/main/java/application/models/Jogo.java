@@ -27,10 +27,11 @@ public class Jogo {
     @ManyToMany
     @JoinTable(
         name = "jogos_possuem_plataformas",
-        joinColumns = @JoinColumn(name="plataformas_id")
+        joinColumns = @JoinColumn(name="plataformas_id"),
+        inverseJoinColumns=@JoinColumn(name="plataformas_id")
     )
 
-    private Set<Jogo> jogos = new HashSet<>();
+    private Set<Plataforma> plataformas = new HashSet<>();
 
     public void setId(int id) {
         this.id = id;
@@ -38,18 +39,23 @@ public class Jogo {
     public int getId() {
         return this.id;
     }
-
+    public Genero getGenero() {
+        return genero;
+    }
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
     public String getTitulo(){
         return this.titulo;
     }
-    public Set<Jogo> getJogos() {
-        return jogos;
+    public Set<Plataforma> getPlataformas() {
+        return plataformas;
     }
-    public void setJogos(Set<Jogo> jogos) {
-        this.jogos = jogos;
+    public void setPlataformas(Set<Plataforma> plataformas) {
+        this.plataformas = plataformas;
     }
     
 }
